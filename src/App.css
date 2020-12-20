@@ -86,7 +86,7 @@ ul{
   text-align: left;
   list-style-type: none;
   max-height: 356px;
-  overflow-y: scroll;
+  overflow-y: overlay;
 }
 
 li{
@@ -95,7 +95,7 @@ li{
 }
 li span.delete{
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 18px;
 }
 
@@ -118,6 +118,27 @@ button{
 
 small{
   margin-bottom: 10px;
+}
+
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: none;
+  border-radius: 10px;
+  background-color: #AAB4B6;
+}
+
+::-webkit-scrollbar
+{
+  width: 6px;
+  border-radius: 10px;
+  background-color: #AAB4B6;
+}
+
+::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: none;
+  background-color: #999;
 }
 
 @media only screen and (min-width: 600px) {
