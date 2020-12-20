@@ -1,10 +1,18 @@
-import React  from "react";
+import React, {useContext} from "react";
+import WeatherContext from "../context/weatherContext";
 
 
 const  CityItem= ({ city }) => {
+    const weatherContext = useContext(WeatherContext);
+    const { removeCity } = weatherContext;
+
+    const onClick = () => {
+        removeCity(city.name)
+    }
 
     return(
         <li>
+            <span className="delete" onClick={onClick}>&#10005;</span>
             <div className="temperature">
                 <h2>{city.name}</h2>
                 <h2>{city.temperature}°</h2>

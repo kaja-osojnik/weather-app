@@ -5,3 +5,5 @@ export const SET_LOADING = 'SET_LOADING';
 export const CITY_NOT_FOUND = 'CITY_NOT_FOUND';
 export const CLEAR_ALERT = 'CLEAR_ALERT';
 export const LOAD_CITIES = 'LOAD_CITIES';
+export const REMOVE_CITY = 'REMOVE_CITY';
+export const ALREADY_EXISTS = 'ALREADY_EXISTS';

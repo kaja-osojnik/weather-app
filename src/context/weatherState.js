@@ -9,7 +9,9 @@ import {
     SET_LOADING,
     CITY_NOT_FOUND,
     CLEAR_ALERT,
-    LOAD_CITIES
+    LOAD_CITIES,
+    REMOVE_CITY,
+    ALREADY_EXISTS
 } from "./types";
 
 const WeatherState = props => {
@@ -35,6 +37,7 @@ const WeatherState = props => {
     //Search Cities
     const searchCity = async cityName => {
         setLoading(true)
+
        try{
            const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=b296986cc6760f0d001dfcfa6840d29e`);
 
@@ -88,8 +91,23 @@ const WeatherState = props => {
                     payload: cityData
                 })
             }
-
         }
+    }
+
+    // Remove city
+    const removeCity = (index) => {
+        dispatch({
+            type: REMOVE_CITY,
+            payload: index
+        })
+    }
+
+    // Already exists alert
+    const alreadyExists = async cityName => {
+        dispatch({
+            type: ALREADY_EXISTS,
+            payload: "Psst, this city is already in your list.."
+        })
     }
 
     return <WeatherContext.Provider
@@ -103,7 +121,9 @@ const WeatherState = props => {
             searchCity,
             setLoading,
             clearAlert,
-            loadSavedCities
+            loadSavedCities,
+            removeCity,
+            alreadyExists
     }}>
         {props.children}
     </WeatherContext.Provider>

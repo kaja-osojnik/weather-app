@@ -4,13 +4,27 @@ import WeatherContext from "../context/weatherContext";
 
 const  AddCity= () => {
     const weatherContext = useContext(WeatherContext);
-    const { closeSearchCities, searchCity, alert, clearAlert } = weatherContext;
+    const { closeSearchCities, searchCity, alert, clearAlert, cities, alreadyExists } = weatherContext;
     const [cityName, setCityName] = useState('')
 
     const onSumbit = (e) => {
         e.preventDefault();
-        searchCity(cityName);
+        let checkCities = false;
+        for (let i = 0; i<cities.length; i++){
+            if(cities[i].name === cityName)
+                checkCities = true
+        }
+
+        if(!checkCities){
+            searchCity(cityName);
+            setCityName("");
+        } else {
+            alreadyExists()
+        }
+
     }
+
+
 
     const onChange = (e) => {
         setCityName(e.target.value);

@@ -5,7 +5,9 @@ import {
     SET_LOADING,
     CITY_NOT_FOUND,
     CLEAR_ALERT,
-    LOAD_CITIES
+    LOAD_CITIES,
+    REMOVE_CITY,
+    ALREADY_EXISTS
 } from "./types";
 
 export default (state, action) => {
@@ -60,6 +62,26 @@ export default (state, action) => {
             return{
                 ...state,
                 alert: ""
+            }
+
+        case REMOVE_CITY:
+            var arrayDel = JSON.parse(window.localStorage.getItem("savedCities")) || [];//the "|| []" replaces possible null from localStorage with empty array
+            var valueDel = action.payload
+
+            if(arrayDel.indexOf(valueDel) !== -1){
+                arrayDel.splice(arrayDel.indexOf(valueDel), 1);
+                window.localStorage.setItem("savedCities", JSON.stringify(arrayDel));
+            }
+
+            return{
+                ...state,
+                cities: state.cities.filter(city=> city.name !== action.payload)
+            }
+
+        case ALREADY_EXISTS:
+            return{
+                ...state,
+                alert: action.payload
             }
 
 

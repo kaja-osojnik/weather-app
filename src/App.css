@@ -46,6 +46,7 @@ h1{
   width: 100%;
   font-size: 16px;
   border-radius: 4px;
+  margin-top: 10px;
 }
 
 .add-city-modal{
@@ -60,15 +61,24 @@ h1{
 }
 
 input[type="text"] {
-  background-color: transparent;
+  background-color: transparent!important;
   border: none;
   border-bottom: 1px solid darkcyan;
   display: block;
   width: 100%;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 2px;
   font-size: 19px;
 }
+
+input[type="text"]:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid darkcyan;
+  background-color: transparent;
+}
+
+
 
 ul{
   margin-left: 0;
@@ -76,11 +86,17 @@ ul{
   text-align: left;
   list-style-type: none;
   max-height: 356px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 li{
   border-bottom: 1px solid darkcyan;
+  position: relative;
+}
+li span.delete{
+  position: absolute;
+  right: 0;
+  top: 18px;
 }
 
 .temperature{
@@ -98,6 +114,10 @@ li{
 
 button{
   cursor: pointer;
+}
+
+small{
+  margin-bottom: 10px;
 }
 
 @media only screen and (min-width: 600px) {
